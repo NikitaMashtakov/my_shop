@@ -11,7 +11,7 @@ export default function Content() {
     useEffect(()=>{console.log('effece')}, [])
     return (
         <main>
-            <div className="container mx-auto max-v-2xl pt-5 grid gap-4 grid-cols-2 grid-rows-3">
+            <div className="container mx-auto max-v-2xl pt-5 grid gap-4 grid-cols-3">
             {products.map(product => <Product product={product} key={product.id} />)}
             </div>
         </main>

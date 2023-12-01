@@ -14,20 +14,11 @@ export function Product({product}: ProductProps) {
     const btnClasses = ['py-2 px-4 border', btnClassName]
     return(
         <div
-        className="border py-2 px-4 rounded flex flex-col items-center mb-2"
+        className="border py-2 px-4 rounded flex flex-col items-center mb-2 hover:bg-gray-100 hover:text-green-500"
         >
             <img src={product.image} className="w-1/6" alt={product.title}></img>
             <p>{product.title}</p>
             <p className="font-bold"> {product.price} </p>
-            <button 
-            className={btnClasses.join(' ')}
-            onClick={() => setDetails(prev => !prev)}
-            >
-                {details ? 'Hide details' : 'Show details'}
-            </button>
-            {details && <div>
-                <p>{product.description}</p>
-            </div>}
         </div>
     )
 }
