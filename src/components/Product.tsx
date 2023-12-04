@@ -1,24 +1,27 @@
-import React, {useState} from "react"
-import { AProduct } from "../models"
-import Button from '@mui/material/Button';
+import React, {useState,useContext} from "react"
+import { IProduct } from "../types/models"
+import { ModalContext } from "../context/ModelContext"
+
 
 
 interface ProductProps {
-    product: AProduct
+    product: IProduct
 }
 
 
 export function Product({product}: ProductProps) {
-    const [details, setDetails] = useState(false)
-    const btnClassName = details ? 'bg-yellow-400' : 'bg-blue-400'
-    const btnClasses = ['py-2 px-4 border', btnClassName]
     return(
         <div
+        key={product.id}
         className="border py-2 px-4 rounded flex flex-col items-center mb-2 hover:bg-gray-100 hover:text-green-500"
         >
-            <img src={product.image} className="w-1/6" alt={product.title}></img>
-            <p>{product.title}</p>
-            <p className="font-bold"> {product.price} </p>
+            <div><img src={product.image}/></div>
+            
+            <div>{product.title}</div>
+            <div className="font-bold bottom-0 relative"> {product.price} </div>
         </div>
     )
 }
+
+// className="bg-cover bg-no-repeat bg-center h-5/6 min-w-[100px]"
+//                 style={{backgroundImage:`url(${product.image})`}}

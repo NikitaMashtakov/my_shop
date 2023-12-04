@@ -1,8 +1,8 @@
 import React from 'react';
 import './index.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Content from './components/Content';
+import {Route, Routes} from 'react-router-dom'
+import { MainPage } from './pages/MainPage';
+import Router from './components/Router';
 // import { Product } from './components/Product';
 // import axios from 'axios'
 // import { AProduct } from './models';
@@ -13,8 +13,7 @@ import Content from './components/Content';
 function App() {
   return (
     <>
-    <Header />
-    <Content />
+    <Router />
     </>
   );
 }
