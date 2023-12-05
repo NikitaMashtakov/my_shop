@@ -1,6 +1,7 @@
 import React, {useState,useContext} from "react"
 import { IProduct } from "../types/models"
-import { ModalContext } from "../context/ModelContext"
+import { ModalContext } from "../context/CartContext"
+import { Link } from "react-router-dom"
 
 
 
@@ -11,17 +12,16 @@ interface ProductProps {
 
 export function Product({product}: ProductProps) {
     return(
+        <Link to={`/product/${product.id}`}>
         <div
         key={product.id}
-        className="border py-2 px-4 rounded flex flex-col items-center mb-2 hover:bg-gray-100 hover:text-green-500"
+        className="border py-2 px-4 rounded flex flex-col  mb-2 hover:bg-gray-100 hover:text-green-500 "
         >
-            <div><img src={product.image}/></div>
+            <div className="grow flex justify-center items-center"><img src={product.image} /></div>
             
-            <div>{product.title}</div>
-            <div className="font-bold bottom-0 relative"> {product.price} </div>
+            <div className="text-center">{product.title}</div>
+            <div className="font-bold self-center"> {product.price} </div>
         </div>
+        </Link>
     )
 }
-
-// className="bg-cover bg-no-repeat bg-center h-5/6 min-w-[100px]"
-//                 style={{backgroundImage:`url(${product.image})`}}

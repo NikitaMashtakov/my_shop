@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Product } from '../components/Product';
 import { Modal } from '../components/Modal';
-import { ModalContext } from '../context/ModelContext';
+import { CartContext } from '../context/CartContext';
 import Cart from "../components/Cart";
 import { IProduct } from '../types/models';
 import { ProductService } from '../services/product.service';
+import Header from '../components/Header';
 //import styles from './../index.css'
 
 export function MainPage() {
@@ -22,15 +23,7 @@ export function MainPage() {
 
     return (
         <>
-            <header>
-                <nav className='h-[50px] flex justify-between px-5 bg-green-600 items-center text-white'>
-                    <img src="way.png"></img>
-                    <div>Магазин</div>
-                    <div>О нас</div>
-                    <div>Доставка</div>
-                    <Cart />
-                </nav>
-            </header>
+            <Header />
 
             <main>
                 <div className="container mx-auto max-v-2xl pt-5 grid gap-4 grid-cols-3">

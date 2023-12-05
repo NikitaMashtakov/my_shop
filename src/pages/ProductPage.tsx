@@ -4,6 +4,7 @@ import { ProductService } from "../services/product.service"
 import { Product } from "../components/Product"
 import { IProduct } from "../types/models"
 import Cart from "../components/Cart"
+import Header from "../components/Header"
 
 const ProductPage = () => {
     const {id} = useParams()
@@ -20,15 +21,7 @@ const ProductPage = () => {
     
     return (
         <>
-        <header>
-                <nav className='h-[50px] flex justify-between px-5 bg-green-600 items-center text-white'>
-                    <img src="./../way.png"></img>
-                    <div>Магазин</div>
-                    <div>О нас</div>
-                    <div>Доставка</div>
-                    <Cart />
-                </nav>
-            </header>
+        <Header />
         <div>
             <div key= {product?.id} >
         <div 
