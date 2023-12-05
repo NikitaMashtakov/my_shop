@@ -9,9 +9,12 @@ function Header () {
                     <div>Магазин</div>
                     <div>О нас</div>
                     <div>Доставка</div>
-                    <Cart />
+                    <Link to="/cart">
+                        <Cart />
+                    </Link>
                 </nav>
         </header>
+
     )
 }
 
