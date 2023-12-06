@@ -13,7 +13,7 @@ export function Modal({ children, title, onClose }: ModalProps) {
             <div 
                 className="w-[500px] p-5 rounded bg-white absolute top-10 left-1/2 -translate-x-1/2"
             >
-                <h1>{title}</h1>
+                <h1 className="font-bold">{title}</h1>
                 {children}
             </div>
         </>
