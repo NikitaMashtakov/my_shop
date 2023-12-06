@@ -16,17 +16,18 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 export default function Cart() {
   const {cartProducts} = useContext(CartContext)
-  let fullQuantity: number = 0
+  
   useEffect(()=>{
-    fullQuantity = 0
+    let fullQuantity = 0
     for (let i = 0; i < cartProducts.length; i++) {
       fullQuantity += cartProducts[i].quantity
     }
     console.log(fullQuantity)
+    const badge = fullQuantity.toString()
   },[cartProducts])
   return (
     <IconButton aria-label="cart">
-      <StyledBadge badgeContent={fullQuantity} color="secondary">
+      <StyledBadge badgeContent={''} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>

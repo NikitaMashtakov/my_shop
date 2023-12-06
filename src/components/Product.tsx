@@ -19,7 +19,7 @@ export function Product({product}: ProductProps) {
             <div className="grow flex justify-center items-center"><img src={product.image} /></div>
             
             <div className="text-center">{product.title}</div>
-            <div className="font-bold self-center"> {product.price} </div>
+            <div className="font-bold self-center">$ {product.price} </div>
         </div>
         </Link>
     )

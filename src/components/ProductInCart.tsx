@@ -1,6 +1,7 @@
 import { IProduct } from "../types/models"
 import { CartContext, ICartProduct } from "../context/CartContext"
 import { Link } from "react-router-dom"
+import { useContext, useState } from "react"
 
 
 
@@ -8,19 +9,59 @@ import { Link } from "react-router-dom"
 
 
 export function ProductInCart({product,quantity}: ICartProduct, key:any) {
+    const {cartProducts,plusProduct, removeProduct, minusProduct} = useContext(CartContext)
+    // const [incrementProducts, setIncrementCartProducts] = useState<ICartProduct[]>([])
+    // const handlePlusClick = () => {
+    //     const prodIndex =  cartProducts.findIndex(value => value.product.id === product.id)
+    //     const newProductInCart = {
+    //         ...cartProducts[prodIndex],
+    //         quantity: cartProducts[prodIndex].quantity + 1
+    //     }
+    //     const newCartProducts = cartProducts.slice()
+    //     newCartProducts.splice(prodIndex, 1, newProductInCart)
+    //     cartProducts = newCartProducts
+
+    // }
+    const clickPlus = () => {
+        const prodIndex =  cartProducts.findIndex(value => value.product.id === product.id)
+        plusProduct(cartProducts[prodIndex])
+    }
+    const clickRemove = () => {
+        const prodIndex =  cartProducts.findIndex(value => value.product.id === product.id)
+        removeProduct(cartProducts[prodIndex])
+    }
+    const clickMinus = () => {
+        const prodIndex =  cartProducts.findIndex(value => value.product.id === product.id)
+        minusProduct(cartProducts[prodIndex])
+    }
     return(
         
         <div
         key={product.id}
-        className="border py-2 px-4 rounded flex flex-col  mb-2"
+        className="border py-2 px-4 rounded flex h-[100px] mb-2"
         >
-            <div className="grow flex justify-center items-center"><img src={product.image} /></div>
-            <div className="text-center">{product.title}</div>
-            <div className="font-bold self-center"> {product.price*quantity} </div>
-            <button className="border-2 py-2 px-4 rounded-lg bg-slate-500 text-white">-</button>
-            <div className="text-center font-bold">{quantity}</div>
-            <button className="border-2 py-2 px-4 rounded-lg bg-slate-500 text-white">+</button>
-            <button className="border-2 py-2 px-4 rounded-lg bg-slate-500 text-white">Remove</button>
+            <div className="grow flex justify-center items-center "><img className="h-[80px]" src={product.image} /></div>
+            <div className="text-center justify-center items-center"><p>{product.title}</p></div>
+            <div className="font-bold self-center justify-center items-center"> {product.price*quantity} </div>
+            <button 
+                className="border-2 py-2 px-4 rounded-lg bg-slate-500 text-white justify-center items-center h-[30px]"
+                onClick={clickMinus}
+            >
+                -
+            </button>
+            <div className="text-center font-bold justify-center items-center">{quantity}</div>
+            <button 
+                className="border-2 py-2 px-4 rounded-lg bg-slate-500 text-white justify-center items-center" 
+                onClick={clickPlus}
+            >
+                    +
+            </button>
+            <button 
+                className="border-2 py-2 px-4 rounded-lg bg-slate-500 text-white justify-center items-center" 
+                onClick={clickRemove}
+            >
+                    Remove
+            </button>
         </div>
     )
 }
