@@ -1,7 +1,5 @@
-import { IProduct } from "../types/models"
 import { CartContext, ICartProduct } from "../context/CartContext"
-import { Link } from "react-router-dom"
-import { useContext, useState } from "react"
+import { useContext } from "react"
 
 
 
@@ -10,18 +8,7 @@ import { useContext, useState } from "react"
 
 export function ProductInCart({product,quantity}: ICartProduct, key:any) {
     const {cartProducts,plusProduct, removeProduct, minusProduct} = useContext(CartContext)
-    // const [incrementProducts, setIncrementCartProducts] = useState<ICartProduct[]>([])
-    // const handlePlusClick = () => {
-    //     const prodIndex =  cartProducts.findIndex(value => value.product.id === product.id)
-    //     const newProductInCart = {
-    //         ...cartProducts[prodIndex],
-    //         quantity: cartProducts[prodIndex].quantity + 1
-    //     }
-    //     const newCartProducts = cartProducts.slice()
-    //     newCartProducts.splice(prodIndex, 1, newProductInCart)
-    //     cartProducts = newCartProducts
 
-    // }
     const clickPlus = () => {
         const prodIndex =  cartProducts.findIndex(value => value.product.id === product.id)
         plusProduct(cartProducts[prodIndex])

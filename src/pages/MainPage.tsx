@@ -1,12 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Product } from '../components/Product';
-import { Modal } from '../components/Modal';
-import { CartContext } from '../context/CartContext';
-import Cart from "../components/Cart";
 import { IProduct } from '../types/models';
 import { ProductService } from '../services/product.service';
 import Header from '../components/Header';
-//import styles from './../index.css'
 
 export function MainPage() {
     const [products, setProducts] = useState<IProduct[]>([])

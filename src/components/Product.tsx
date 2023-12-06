@@ -1,5 +1,4 @@
 import { IProduct } from "../types/models"
-import { CartContext } from "../context/CartContext"
 import { Link } from "react-router-dom"
 
 
