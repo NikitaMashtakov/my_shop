@@ -1,13 +1,22 @@
 import { useContext, useState } from "react"
-import { CartContext } from "../context/CartContext"
+import { CartContext, ICartProduct } from "../context/CartContext"
 import { ProductInCart } from "./ProductInCart"
 
+interface IOrder {
+    products: ICartProduct[],
+    email: string,
+    name: string,
+}
+
 export const Checkout = () => {
-    const [value, setValue] = useState('')
     const {cartProducts} = useContext(CartContext)
-    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(event.target.value)
-    }
+    const [order, setOrder] = useState()
+    const [email, setEmail] = useState()
+    const [name, setName] = useState()
+    
+    // const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     setValue(event.target.value)
+    // }
     return (
         <>
         <div>
@@ -19,8 +28,8 @@ export const Checkout = () => {
                 type="text"
                 className="border py-2 px-4 mb-2 w-full"
                 placeholder="@mail.ru"
-                value={value}
-                onChange={changeHandler}
+                value={email}
+                //onChange={changeHandler}
             />
             
             <button className="py-2 px-4 border bg-yellow-400 hover:text-white">Checkout</button>

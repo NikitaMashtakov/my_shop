@@ -2,7 +2,7 @@ import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -16,18 +16,18 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 export default function Cart() {
   const {cartProducts} = useContext(CartContext)
-  
+  const [badge, setBadge] = useState<string>()
   useEffect(()=>{
     let fullQuantity = 0
     for (let i = 0; i < cartProducts.length; i++) {
       fullQuantity += cartProducts[i].quantity
     }
     console.log(fullQuantity)
-    const badge = fullQuantity.toString()
+    setBadge(fullQuantity.toString())
   },[cartProducts])
   return (
     <IconButton aria-label="cart">
-      <StyledBadge badgeContent={''} color="secondary">
+      <StyledBadge badgeContent={badge} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>

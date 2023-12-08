@@ -1,11 +1,6 @@
 import { CartContext, ICartProduct } from "../context/CartContext"
 import { useContext } from "react"
 
-
-
-
-
-
 export function ProductInCart({product,quantity}: ICartProduct, key:any) {
     const {cartProducts,plusProduct, removeProduct, minusProduct} = useContext(CartContext)
 

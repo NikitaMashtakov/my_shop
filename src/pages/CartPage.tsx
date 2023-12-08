@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import { CartContext } from "../context/CartContext"
 import { ProductInCart } from "../components/ProductInCart"
-import { ModalContext, ModalState } from "../context/ModalContext"
+import { ModalContext } from "../context/ModalContext"
 import { Modal } from "../components/Modal"
 import { Checkout } from "../components/Checkout"
 
