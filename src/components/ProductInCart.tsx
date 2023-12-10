@@ -31,7 +31,7 @@ export function ProductInCart({ product, quantity }: ICartProduct) {
 			<div className='col-span-1 flex place-content-center'>
 				<img className='h-[80px]' src={product.image} alt='oops :(' />
 			</div>
-			<div className='mr-10 ml-10 font-bold col-span-3'>
+			<div className='mr-10 ml-10 font-bold col-span-3 overflow-hidden whitespace-nowrap lg:whitespace-normal'>
 				<p>{product.title}</p>
 			</div>
 			<div className='mr-10 ml-10 font-bold font-weight-16 flex place-content-center'>

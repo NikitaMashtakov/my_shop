@@ -6,13 +6,17 @@ function Header() {
 		<header>
 			<nav className='h-[50px] flex justify-between px-5 bg-green-600 items-center text-white'>
 				<Link to={'/'}>
-					<img className='h-[40px]' src='./ouroboros.svg' alt='oops :('></img>
+					<img
+						className='h-[40px]'
+						src='./../ouroboros.svg'
+						alt='oops :('
+					></img>
 				</Link>
 				<Link to={'/'}>
-					<div>Магазин</div>
+					<div>Shop</div>
 				</Link>
-				<div>О нас</div>
-				<div>Доставка</div>
+				<div>About</div>
+				<div>Delivery</div>
 				<Link to='/cart'>
 					<Cart />
 				</Link>
