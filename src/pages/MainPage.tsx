@@ -20,7 +20,7 @@ export function MainPage() {
 			<Header />
 
 			<main>
-				<div className='container mx-auto max-v-2xl h-1/4 pt-5 grid gap-4 grid-cols-3'>
+				<div className='container mx-auto max-w-5xl h-1/4 pt-5 grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1'>
 					{products &&
 						products.map(product => (
 							<Product key={product.id} product={product} />

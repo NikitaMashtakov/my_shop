@@ -34,27 +34,25 @@ export function ProductInCart({ product, quantity }: ICartProduct) {
 			<div className='mr-10 ml-10 font-bold col-span-3 overflow-hidden whitespace-nowrap lg:whitespace-normal'>
 				<p>{product.title}</p>
 			</div>
-			<div className='mr-10 ml-10 font-bold font-weight-16 flex place-content-center'>
+			<div className='m-auto font-bold font-weight-16 flex place-content-center'>
 				${product.price}{' '}
 			</div>
-			<div className='grid grid-cols-3'>
+			<div className='flex justify-center'>
 				<button
-					className='h-[30px] border-1 rounded-full bg-gray-400 hover:bg-gray-600 text-white'
+					className='inline-block h-[30px] w-[30px] mr-2 border-1 rounded-full bg-gray-400 hover:bg-gray-600 text-white'
 					onClick={clickMinus}
 				>
 					-
 				</button>
-
-				<div className='flex place-content-center'>{quantity}</div>
-
+				<span className='inline-block '>{quantity}</span>
 				<button
-					className=' h-[30px] border-1 rounded-full bg-gray-400 hover:bg-gray-600 text-white'
+					className='inline-block h-[30px] w-[30px] ml-2 border-1 rounded-full bg-gray-400 hover:bg-gray-600 text-white'
 					onClick={clickPlus}
 				>
 					+
 				</button>
 			</div>
-			<div className='mr-10 ml-10 font-bold flex place-content-center'>
+			<div className='m-auto font-bold flex place-content-center'>
 				${(product.price * quantity).toFixed(2)}{' '}
 			</div>
 			<div className='col-span-1 flex place-content-center'>

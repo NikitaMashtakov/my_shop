@@ -8,7 +8,17 @@ interface ProductProps {
 }
 
 export function Product({ product }: ProductProps) {
-	const { cartProducts, addProductToCart } = useContext(CartContext)
+	const { cartProducts, addProductToCart, plusProduct, minusProduct } =
+		useContext(CartContext)
+	const prodIndex = cartProducts.findIndex(
+		value => value.product.id === product.id,
+	)
+	const clickPlus = () => {
+		plusProduct(cartProducts[prodIndex])
+	}
+	const clickMinus = () => {
+		minusProduct(cartProducts[prodIndex])
+	}
 	const isExistsInCart = cartProducts.some(i => i.product.id === product.id)
 	return (
 		<div
@@ -23,18 +33,37 @@ export function Product({ product }: ProductProps) {
 						alt='oops :('
 					/>
 				</div>
+				<div className='text-center overflow-hidden whitespace-nowrap text-ellipsis'>
+					{product.title}
+				</div>
+				<div className='text-center font-bold'>$ {product.price} </div>
 			</Link>
-
-			<div className='text-center overflow-hidden whitespace-nowrap text-ellipsis'>
-				{product.title}
-			</div>
-			<div className='font-bold self-center'>$ {product.price} </div>
-			<button
-				className='text-sm mt-3 bg-gray-100 rounded-xl w-3/4 mx-auto block p-1 hover:bg-green-200'
-				onClick={() => !isExistsInCart && addProductToCart(product)}
-			>
-				{isExistsInCart ? 'Already in cart' : 'Add to cart'}
-			</button>
+			{!isExistsInCart ? (
+				<button
+					className='text-sm mt-3 bg-gray-300 rounded-xl w-2/6 mx-auto block p-1 hover:bg-green-200'
+					onClick={() => addProductToCart(product)}
+				>
+					{isExistsInCart ? 'Already in cart' : 'Add to cart'}
+				</button>
+			) : (
+				<div className='flex justify-center'>
+					<button
+						className='inline-block h-[30px] w-[30px] mr-2 border-1 rounded-full bg-gray-400 hover:bg-gray-600 text-white'
+						onClick={clickMinus}
+					>
+						-
+					</button>
+					<span className='inline-block '>
+						{cartProducts[prodIndex].quantity}
+					</span>
+					<button
+						className='inline-block h-[30px] w-[30px] ml-2 border-1 rounded-full bg-gray-400 hover:bg-gray-600 text-white'
+						onClick={clickPlus}
+					>
+						+
+					</button>
+				</div>
+			)}
 		</div>
 	)
 }
