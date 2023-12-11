@@ -36,14 +36,14 @@ export function Product({ product }: ProductProps) {
 				<div className='text-center overflow-hidden whitespace-nowrap text-ellipsis'>
 					{product.title}
 				</div>
-				<div className='text-center font-bold'>$ {product.price} </div>
+				<div className='text-center font-bold mb-2'>$ {product.price} </div>
 			</Link>
 			{!isExistsInCart ? (
 				<button
-					className='text-sm mt-3 bg-gray-300 rounded-xl w-2/6 mx-auto block p-1 hover:bg-green-200'
+					className='text-sm h-[30px] bg-gray-300 rounded-xl w-2/6 mx-auto block p-1 hover:bg-green-200'
 					onClick={() => addProductToCart(product)}
 				>
-					{isExistsInCart ? 'Already in cart' : 'Add to cart'}
+					Add to cart
 				</button>
 			) : (
 				<div className='flex justify-center'>
