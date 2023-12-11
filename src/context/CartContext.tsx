@@ -18,18 +18,18 @@ export const CartContext = createContext<ICartContext>({
 	addProductToCart: (product: IProduct) => {},
 	plusProduct: (product: ICartProduct) => {},
 	removeProduct: (product: ICartProduct) => {},
-	minusProduct: (product: ICartProduct) => {}
+	minusProduct: (product: ICartProduct) => {},
 })
 
 export const CartState = ({ children }: { children: React.ReactNode }) => {
 	const [cartProducts, setCartProducts] = useState<ICartProduct[]>([])
 	const plusProduct = (product: ICartProduct) => {
 		const prodIndex = cartProducts.findIndex(
-			value => value.product.id === product.product.id
+			value => value.product.id === product.product.id,
 		)
 		const newProductInCart = {
 			...cartProducts[prodIndex],
-			quantity: cartProducts[prodIndex].quantity + 1
+			quantity: cartProducts[prodIndex].quantity + 1,
 		}
 		const newCartProducts = cartProducts.slice()
 		newCartProducts.splice(prodIndex, 1, newProductInCart)
@@ -37,7 +37,7 @@ export const CartState = ({ children }: { children: React.ReactNode }) => {
 	}
 	const removeProduct = (product: ICartProduct) => {
 		const prodIndex = cartProducts.findIndex(
-			value => value.product.id === product.product.id
+			value => value.product.id === product.product.id,
 		)
 		const newCartProducts = cartProducts.slice()
 		newCartProducts.splice(prodIndex, 1)
@@ -45,12 +45,12 @@ export const CartState = ({ children }: { children: React.ReactNode }) => {
 	}
 	const minusProduct = (product: ICartProduct) => {
 		const prodIndex = cartProducts.findIndex(
-			value => value.product.id === product.product.id
+			value => value.product.id === product.product.id,
 		)
 		if (cartProducts[prodIndex].quantity > 1) {
 			const newProductInCart = {
 				...cartProducts[prodIndex],
-				quantity: cartProducts[prodIndex].quantity - 1
+				quantity: cartProducts[prodIndex].quantity - 1,
 			}
 			const newCartProducts = cartProducts.slice()
 			newCartProducts.splice(prodIndex, 1, newProductInCart)
@@ -61,12 +61,12 @@ export const CartState = ({ children }: { children: React.ReactNode }) => {
 	}
 	const addProductToCart = (product: IProduct, quantity = 1) => {
 		const prodIndex = cartProducts.findIndex(
-			value => value.product.id === product.id
+			value => value.product.id === product.id,
 		)
 		if (prodIndex < 0) {
 			const newProductInCart = {
 				product,
-				quantity: quantity
+				quantity: quantity,
 			}
 			setCartProducts([...cartProducts, newProductInCart])
 		} else {
@@ -83,7 +83,7 @@ export const CartState = ({ children }: { children: React.ReactNode }) => {
 				addProductToCart,
 				plusProduct,
 				removeProduct,
-				minusProduct
+				minusProduct,
 			}}
 		>
 			{children}
